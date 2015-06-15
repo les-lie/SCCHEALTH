@@ -44,9 +44,9 @@ production:
   #password: postgres
   #host: localhost
 
-  database: dadc2cas2j4iak
-  username: aimltbaksozcki
-  password: T2Rgg7TCJflgOhIuYw1ucj7z9O
-  host: ec2-54-243-132-114.compute-1.amazonaws.comm
+  database: d4e1p318li7vu9
+  username: ctlhejrsuppabw
+  password: QqtP_MpWSTMTYco3cqxG-KXNqo
+  host: ec2-54-204-35-248.compute-1.amazonaws.com
   pool: 5
   timeout: 5000
