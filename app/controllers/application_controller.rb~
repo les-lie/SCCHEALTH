@@ -12,10 +12,10 @@ class ApplicationController < ActionController::Base
   private
   def checkstatus
        
-    if current_user
-      Rails.logger.info(current_user[:status])
+    if @current_user
+     
      #  @user = User.find(current_user[:id])
-      if current_user[:status]==false
+      if @current_user.status==false
           sign_out(current_user)
 #          
         #redirect_to signout_path, :method=>:post
