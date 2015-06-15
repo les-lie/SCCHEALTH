@@ -11,6 +11,7 @@ gem 'kaminari'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails'
 gem 'rb-readline', '~> 0.4.2'
+gem 'rails_12factor'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -32,7 +33,6 @@ group :development, :test do
 end
 group :production do
   gem 'pg'
-  gem 'rails_12factor'
 end
 group :test do
   gem 'capybara'
