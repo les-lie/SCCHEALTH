@@ -1,0 +1,20 @@
+<div class="header">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-sm-4">
+		<%= image_tag "logo.png" %>
+            </div>
+            <div class="login_right">
+		<% if @current_user.admin? %>
+		   <%= link_to "Users", users_path %>
+                <%= link_to "Search", search_path %>
+                <% end %>
+                   <%= link_to "Saved Records", allrecords_path %>
+		   <%= link_to "Profile", edit_user_path(@current_user) %>
+                   <%= link_to "Logout", logout_path, method: :delete %>
+            </div>
+        </div>
+    </div>
+
+</div>
+

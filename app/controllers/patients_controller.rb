@@ -1,0 +1,172 @@
+class PatientsController < ApplicationController
+  before_action :set_patient, only: [:update]
+  
+  def index
+    if @current_user.isadmin
+      @patients = Patient.all.order(id: :desc).page(params[:page]).per(10)
+    else
+      @patients=Patient.where(userid: session[:user_id]).order(id: :desc).page(params[:page]).per(10)
+    end
+  end
+  
+  def search
+    gender = params[:gender]
+    location = params[:location]   
+    topic = params[:topic]
+    duration = params[:duration]
+    type = params[:type]
+    computer = params[:computer]
+
+    if (params.has_key?(:fromdate) &&   !params[:fromdate].blank?)
+      fromdate = Date.strptime(params[:fromdate], "%m/%d/%Y").to_s(:db)
+    else
+      fromdate = Date.strptime('01/01/1970', "%m/%d/%Y").to_s(:db)
+    end
+    
+    if (params.has_key?(:todate) && !params[:todate].blank?)
+      todate = Date.strptime(params[:todate], "%m/%d/%Y").to_s(:db)
+    else
+      todate = Date.strptime('12/31/2100', "%m/%d/%Y").to_s(:db)
+    end
+      @patients = Patient.where("gender LIKE ? AND  location LIKE ? AND topicdiscussed LIKE ? AND timelength LIKE ? AND noofparticipant LIKE ? AND computer LIKE ? AND startdate >= ? AND startdate <= ?","%#{gender}%","%#{location}%","%#{topic}%","%#{duration}%","%#{type}%","%#{computer}%","%#{fromdate}%","%#{todate}%").order(id: :desc).page(params[:page]).per(10)
+   end
+  
+  def export
+    @patients = Patient.all.order(id: :desc)
+    respond_to do |format|
+      format.html
+      format.csv { send_data @patients.to_csv }
+      format.xls { send_data @patients.to_csv(col_sep: "\t") }
+    end
+  end
+
+   # GET /patients/new
+  def new
+    @patient = Patient.new
+  end
+  
+  def bulkcreate
+    if @current_user.isadmin
+      @patients = Patient.all.last(10).reverse
+    else
+      @patients=Patient.where(userid: session[:user_id]).last(10).reverse
+    end
+    @patient = Patient.new
+  end
+
+  def multisave
+    if params1[:startdate1]!=''
+      startdate1 = Date.strptime(params1[:startdate1], "%m/%d/%Y")
+    end
+    if params2[:startdate2]!=''
+      startdate2 = Date.strptime(params2[:startdate2], "%m/%d/%Y")
+    end
+    if params3[:startdate3]!=''
+      startdate3 = Date.strptime(params3[:startdate3], "%m/%d/%Y")
+    end
+    
+    @patient1 = Patient.create(userid: params1[:userid], startdate: startdate1, starttime: params1[:starttime1], initialcontact: params1[:initialcontact1], agerange: params1[:agerange1], gender: params1[:gender1], languagespeaking: params1[:languagespeaking1], languagereading: params1[:languagereading1], computer: params1[:computer1], computerskills: params1[:computerskills1], topicdiscussed: params1[:topicdiscussed1], timelength: params1[:timelength1], notes: params1[:notes1], noofparticipant: params1[:noofparticipant1], noofinteraction: params1[:noofinteraction1], location: params1[:location1])
+    respond_to do |format|
+      if @patient1.save
+        if params2[:location2]
+          @patient2 = Patient.create(userid: params2[:userid], startdate: startdate2, starttime: params2[:starttime2], initialcontact: params2[:initialcontact2], agerange: params2[:agerange2], gender: params2[:gender2], languagespeaking: params2[:languagespeaking2], languagereading: params2[:languagereading2], computer: params2[:computer2], computerskills: params2[:computerskills2], topicdiscussed: params2[:topicdiscussed2],  timelength: params2[:timelength2], notes: params2[:notes2], noofparticipant: params2[:noofparticipant2], noofinteraction: params2[:noofinteraction2], location: params2[:location2])
+          @patient2.save
+        end
+        if params3[:location3]
+          @patient3 = Patient.create(userid: params3[:userid], startdate: startdate3, starttime: params3[:starttime3], initialcontact: params3[:initialcontact3], agerange: params3[:agerange3], gender: params3[:gender3], languagespeaking: params3[:languagespeaking3], languagereading: params3[:languagereading3], computer: params3[:computer3], computerskills: params3[:computerskills3], topicdiscussed: params3[:topicdiscussed3],  timelength: params3[:timelength3], notes: params3[:notes3], noofparticipant: params3[:noofparticipant3], noofinteraction: params3[:noofinteraction3], location: params3[:location3])
+          @patient3.save
+        end
+        format.html { redirect_to bulkcreate_path, notice: 'Data successfully saved' }
+      else
+        format.html { render action: 'create' }
+      end
+    end
+  end
+  
+   # POST /create
+  def create
+    if create_params[:startdate]!=''
+      startdate = Date.strptime(create_params[:startdate], "%m/%d/%Y")
+    end
+      @patient = Patient.create(userid: create_params[:userid], startdate: startdate, starttime: create_params[:starttime], initialcontact: create_params[:initialcontact], agerange: create_params[:agerange], gender: create_params[:gender], languagespeaking: create_params[:languagespeaking], languagereading: create_params[:languagereading], computer: create_params[:computer], computerskills: create_params[:computerskills], topicdiscussed: create_params[:topicdiscussed],  timelength: create_params[:timelength], notes: create_params[:notes], noofparticipant: create_params[:noofparticipant], noofinteraction: create_params[:noofinteraction], location: create_params[:location])
+
+      respond_to do |format|
+        if @patient.save
+          format.html { redirect_to patients_path, notice: 'Data successfully saved' }
+        else
+          format.html { render action: 'create' }
+        end
+      end
+  end
+
+  # GET /patients/1/show
+  def show
+    @patient = Patient.find(params[:id])
+  end
+  
+   # GET /users/1/edit
+  def edit
+    @patient = Patient.find(params[:id])
+  end
+  
+   # PATCH/PUT /patients/1
+  def update
+      if params[:patient][:startdate]!=''
+        startdate = Date.strptime(params[:patient][:startdate], "%m/%d/%Y")
+      end 
+
+    #Rails.logger.info(startdate)
+
+    respond_to do |format|
+      if @patient.update(edit_params)
+        Patient.where(:id => params[:id]).update_all(:startdate => startdate)
+        format.html { redirect_to edit_patient_path(@patient), notice: 'Record was successfully updated.' }
+      else
+        format.html { render action: 'edit' }
+      end
+    end
+  end
+  
+   # DELETE /parients/1
+  def destroy
+    respond_to do |format|
+      @patient = Patient.find(params[:id])
+      if @patient.destroy
+        format.html { redirect_to :back, notice: 'Record was successfully deleted.' }
+      else
+        format.html { redirect_to :back, alert: 'Record could not be deleted.'}
+      end
+    end
+  end
+
+  private
+  
+    def set_patient
+      @patient = Patient.find(params[:id])
+    end
+    
+    def create_params
+      params.require(:patient).permit(:startdate, :starttime, :initialcontact, :agerange, :gender, :languagespeaking, :languagereading, :computer, :computerskills, :topicdiscussed, 
+:topicdiscussed, :timelength, :notes, :noofparticipant, :noofinteraction, :userid, :location)
+    end
+    
+    def edit_params
+      params.require(:patient).permit(:starttime, :initialcontact, :agerange, :gender, :languagespeaking, :languagereading, :computer, :computerskills, :topicdiscussed, 
+:topicdiscussed, :timelength, :notes, :noofparticipant, :noofinteraction, :userid, :location)
+    end
+    
+    def params1
+      params.require(:patient).permit(:startdate1, :starttime1, :initialcontact1, :agerange1, :gender1, :languagespeaking1, :languagereading1, :computer1, :computerskills1, :topicdiscussed1, 
+:topicdiscussed1, :timelength1, :notes1, :noofparticipant1, :noofinteraction1, :userid, :location1)
+    end
+    
+    def params2
+      params.require(:patient).permit(:startdate2, :starttime2, :initialcontact2, :agerange2, :gender2, :languagespeaking2, :languagereading2, :computer2, :computerskills2, :topicdiscussed2, 
+:topicdiscussed2, :timelength2, :notes2, :noofparticipant2, :noofinteraction2, :userid, :location2)
+    end
+    
+    def params3
+      params.require(:patient).permit(:startdate3, :starttime3, :initialcontact3, :agerange3, :gender3, :languagespeaking3, :languagereading3, :computer3, :computerskills3, :topicdiscussed3, 
+:topicdiscussed3, :timelength3, :notes3, :noofparticipant3, :noofinteraction3, :userid, :location3)
+    end
+end

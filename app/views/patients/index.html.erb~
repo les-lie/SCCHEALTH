@@ -1,0 +1,42 @@
+<h2>Records</h2>
+<%= render partial: "shared/notice" %>
+<div class="table-responsive">
+  <table class="records table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Initial Contact</th>
+        <th>Age Range</th>
+        <th>Gender</th>
+	<th>Time Length</th>
+	<th>Participants (nos)</th>
+	<th>Interaction (nos)</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @patients.each do |patient| %>
+        <tr>
+          <td><%= patient.id %></td>
+          <td><%= patient.initialcontact %></td>
+          <td><%= patient.agerange %></td>
+          <td><%= patient.gender %></td>
+	  <td><%= patient.timelength %></td>
+	  <td><%= patient.noofparticipant %></td>
+	  <td><%= patient.noofinteraction %></td>
+          <td><%= link_to 'Details', patient_path(patient), class: "btn btn-primary btn-xs white" %></td>
+          <td><%= link_to 'Edit', edit_patient_path(patient), class: "btn btn-primary btn-xs white" %></td>
+          <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs white" %></td>	
+        </tr>
+      <% end %>
+         <tr>
+            <td colspan="10">
+                <%= paginate @patients %>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+<%=  link_to 'Create Record', new_patient_path, class: "btn btn-primary white" %>
+<%= link_to 'Bulk Create', bulkcreate_path, class: "btn btn-primary white" %>	

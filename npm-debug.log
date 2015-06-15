@@ -1,0 +1,79 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'rails@2.2.0' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.37
+4 verbose node symlink /usr/bin/node
+5 verbose config Skipping project config: /home/ubuntu/.npmrc. (matches userconfig)
+6 warn package.json mongo@0.1.0 No repository field.
+7 verbose cache add [ 'rails@2.2.0', null ]
+8 verbose cache add name=undefined spec="rails@2.2.0" args=["rails@2.2.0",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'rails@2.2.0',
+9 verbose parsed url   path: 'rails@2.2.0',
+9 verbose parsed url   href: 'rails@2.2.0' }
+10 verbose cache add name="rails" spec="2.2.0" args=["rails","2.2.0"]
+11 verbose parsed url { protocol: null,
+11 verbose parsed url   slashes: null,
+11 verbose parsed url   auth: null,
+11 verbose parsed url   host: null,
+11 verbose parsed url   port: null,
+11 verbose parsed url   hostname: null,
+11 verbose parsed url   hash: null,
+11 verbose parsed url   search: null,
+11 verbose parsed url   query: null,
+11 verbose parsed url   pathname: '2.2.0',
+11 verbose parsed url   path: '2.2.0',
+11 verbose parsed url   href: '2.2.0' }
+12 verbose addNamed [ 'rails', '2.2.0' ]
+13 verbose addNamed [ '2.2.0', '2.2.0' ]
+14 silly lockFile 58e0206d-rails-2-2-0 rails@2.2.0
+15 verbose lock rails@2.2.0 /home/ubuntu/.npm/58e0206d-rails-2-2-0.lock
+16 verbose request where is /rails
+17 verbose request registry https://registry.npmjs.org/
+18 verbose request id f2dc4dea4c2e07d5
+19 verbose url raw /rails
+20 verbose url resolving [ 'https://registry.npmjs.org/', './rails' ]
+21 verbose url resolved https://registry.npmjs.org/rails
+22 verbose request where is https://registry.npmjs.org/rails
+23 info trying registry request attempt 1 at 12:06:15
+24 http GET https://registry.npmjs.org/rails
+25 http 200 https://registry.npmjs.org/rails
+26 silly registry.get cb [ 200,
+26 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly registry.get     etag: '"BS9CL5ROO5LLAZRBFN739SMNE"',
+26 silly registry.get     'content-type': 'application/json',
+26 silly registry.get     'cache-control': 'max-age=60',
+26 silly registry.get     'content-length': '9759',
+26 silly registry.get     'accept-ranges': 'bytes',
+26 silly registry.get     date: 'Thu, 11 Jun 2015 06:36:17 GMT',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     age: '0',
+26 silly registry.get     connection: 'keep-alive',
+26 silly registry.get     'x-served-by': 'cache-sin6921-SIN',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1434004576.925853,VS0,VE216',
+26 silly registry.get     vary: 'Accept' } ]
+27 silly lockFile 58e0206d-rails-2-2-0 rails@2.2.0
+28 silly lockFile 58e0206d-rails-2-2-0 rails@2.2.0
+29 error Error: version not found: rails@2.2.0
+29 error     at /usr/lib/node_modules/npm/lib/cache/add-named.js:125:12
+29 error     at saved (/usr/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:167:7)
+29 error     at Object.oncomplete (fs.js:108:15)
+30 error If you need help, you may report this *entire* log,
+30 error including the npm and node versions, at:
+30 error     <http://github.com/npm/npm/issues>
+31 error System Linux 3.13.0-53-generic
+32 error command "/usr/bin/node" "/usr/bin/npm" "install" "rails@2.2.0"
+33 error cwd /home/ubuntu/ROR/postgres/rails-devise
+34 error node -v v0.10.37
+35 error npm -v 1.4.28
+36 verbose exit [ 1, true ]

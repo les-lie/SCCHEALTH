@@ -1,0 +1,18 @@
+<div class="header">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-sm-4">
+		<%= image_tag "logo.png" %>
+            </div>
+            <div class="col-sm-5 login_right">
+		  
+		   <%= link_to "Create Users", new_user_path %>
+                   <%= link_to "Saved Records", allrecords_path %>
+		   <%= link_to "Profile", edit_user_path(@current_user) %>
+                   <%= link_to "Logout", logout_path, method: :delete %>
+            </div>
+        </div>
+    </div>
+
+</div>
+

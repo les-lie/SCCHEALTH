@@ -1,0 +1,318 @@
+<h2>Records</h2>
+<div class="header_login">
+<script type="text/javascript">
+   
+  
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+    $('#timepicker1').timepicker();
+    $('#timepicker2').timepicker();
+    $('#timepicker3').timepicker();
+    $("#patient_bulkform").submit(function() {
+    if ($('#startdate1').val()=='' || $('#timepicker1').val()=='' || $('#initialcontact1').val()=='' || $('#agerange1').val()=='' || $('#languagespeaking1').val()=='' || $('#gender1').val()=='' || $('#languagereading1').val()=='' || $('#computer1').val()=='' || $('#computerskills1').val()=='' || $('#topicdiscussed1').val()=='' || $('#timelength1').val()=='' || $('#notes1').val()=='' || $('#noofparticipant1').val()=='' || $('#noofinteraction1').val()=='' || $('#location1').val()=='')
+    {
+      alert('Please fill all fields of ROW 1');
+      return false;
+    }
+    if ($('#startdate2').val()!='' || $('#initialcontact2').val()!='' || $('#agerange2').val()!='' || $('#languagespeaking2').val()!='' || $('#gender2').val()!='' || $('#languagereading2').val()!='' || $('#computer2').val()!='' || $('#computerskills2').val()!='' || $('#topicdiscussed2').val()!='' || $('#timelength2').val()!='' || $('#notes2').val()!='' || $('#noofparticipant2').val()!='' || $('#noofinteraction2').val()!='' || $('#location2').val()!='') 
+    {
+      if ($('#startdate2').val()=='' || $('#timepicker2').val()=='' || $('#initialcontact2').val()=='' || $('#agerange2').val()=='' || $('#languagespeaking2').val()=='' || $('#gender2').val()=='' || $('#languagereading2').val()=='' || $('#computer2').val()=='' || $('#computerskills2').val()=='' || $('#topicdiscussed2').val()=='' || $('#timelength2').val()=='' || $('#notes2').val()=='' || $('#noofparticipant2').val()=='' || $('#noofinteraction2').val()=='' || $('#location2').val()=='') 
+      {
+        alert('Please fill all fields of ROW 2');
+        return false;
+      }
+    }
+    if ($('#startdate3').val()!='' || $('#initialcontact3').val()!='' || $('#agerange3').val()!='' || $('#languagespeaking3').val()!='' || $('#gender3').val()!='' || $('#languagereading3').val()!='' || $('#computer3').val()!='' || $('#computerskills3').val()!='' || $('#topicdiscussed3').val()!='' || $('#timelength3').val()!='' || $('#notes3').val()!='' || $('#noofparticipant3').val()!='' || $('#noofinteraction3').val()!='' || $('#location3').val()!='')
+    {
+      if ($('#startdate3').val()=='' || $('#timepicker3').val()=='' || $('#initialcontact3').val()=='' || $('#agerange3').val()=='' || $('#languagespeaking3').val()=='' || $('#gender3').val()=='' || $('#languagereading3').val()=='' || $('#computer3').val()=='' || $('#computerskills3').val()=='' || $('#topicdiscussed3').val()=='' || $('#timelength3').val()=='' || $('#notes3').val()=='' || $('#noofparticipant3').val()=='' || $('#noofinteraction3').val()=='' || $('#location3').val()=='')
+      {
+        alert('Please fill all fields of ROW 3');
+        return false;
+      }
+    }
+  }); 
+  });
+</script>
+<div class="container">
+	<div class="login_after">
+  <table class="records table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Location</th>
+        <th>Start Date</th>
+        <th>Start Time</th>
+        <th>Initial Contact</th>
+	<th>Age Range</th>
+	<th>Preferred Language</th>
+	<th>Language preference reading</th>
+        <th>Own Computer?</th>
+        <th>Computer Skills</th>
+        <th>Topic Discussed</th>
+        <th>Time Spent</th>
+        <th>Navigator notes/ observations</th>
+        <th>Number of Participant Interactions</th>
+        <th>Number of One-on-one interactions</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @patients.each do |patient| %>
+        <tr>
+          <td><%= patient.id %></td>
+          <td><%= patient.location %></td>
+          <td><%= formatted_date(patient.startdate) %></td>
+          <td><%= formatted_time(patient.starttime) %></td>
+	  <td><%= patient.initialcontact %></td>
+	  <td><%= patient.agerange %></td>
+	  <td><%= patient.gender %></td>
+          <td><%= patient.languagespeaking %></td>
+          <td><%= patient.languagereading %></td>
+          <td><%= patient.computer %></td>
+          <td><%= patient.computerskills %></td>
+	  <td><%= patient.topicdiscussed %></td>
+	  <td><%= patient.timelength %></td>
+	  <td><%= patient.notes %></td>
+          <td><%= patient.noofparticipant %></td>
+	  <td><%= patient.noofinteraction %></td>
+          <td><%= link_to 'Details', patient_path(patient), class: "btn btn-primary btn-xs white" %></td>
+          <td><%= link_to 'Edit', edit_patient_path(patient), class: "btn btn-primary btn-xs white" %></td>
+          <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs white" %></td>
+        </tr>
+      <% end %>
+        <tr>
+            <td colspan="18" style="align:left;">
+              <%= link_to "CSV", export_path(format: "csv"), class: "btn btn-primary btn-xs white" %> |
+              <%= link_to "Excel", export_path(format: "xls"), class: "btn btn-primary btn-xs white" %>
+            </td>
+        </tr>
+         <tr>
+            <td colspan="18">
+                 <%= form_tag('/saverecord', 'id'=>'patient_bulkform') do %>
+                <table>
+                          <tr>
+                              <td>Location</td>
+                              <td>Start Date</td>
+                              <td>Start Time</td>
+                              <td>Initial Contact</td>
+                              <td>Age Range</td>
+                              <td>Preferred Language</td>
+                              <td>Gender</td>
+                              <td>Language preference reading</td>
+                              <td>Own Computer?</td>
+                              <td>Computer Skills</td>
+                              <td>Topic Discussed</td>
+                              <td>Time Spent</td>
+                              <td>Navigator notes/ observations</td>
+                              <td>Number of Participant Interactions</td>
+                              <td>Number of One-on-one interactions</td>
+                          </tr>
+                          <tr>
+                            <input name="patient[userid]" type="hidden" value="<%= @current_user.id %>"	 />
+                            <td><select name="patient[location1]" id="location1">
+                                <option value="">Select Location</option>
+                                <option value="North">North</option>
+                                <option value="South">South</option>
+                                <option value="East">East</option>
+                                <option value="West">West</option>
+                                </select></td>
+                           <td><input name="patient[startdate1]" id="startdate1" type="text" placeholder="Start Date" data-provide='datepicker'	 /></td>
+                           <td><input name="patient[starttime1]" type="text" class="dateselect-time input-small timepicker" id="timepicker1" placeholder="Start Time" /></td>
+                           <td><input name="patient[initialcontact1]" id="initialcontact1" type="text" placeholder="Initial Contact" /></td>
+                           <td><select name="patient[agerange1]" id="agerange1">
+                               <option value="">Select age range</option>
+                               <option value="10-15">10-15</option>
+                               <option value="15-20">15-20</option>
+                               <option value="25-30">20-25</option>
+                               <option value="10-15">25-30</option>
+                               <option value="30-35">30-35</option>
+                               <option value="35-40">35-40</option>
+                               <option value="40-45">40-45</option>
+                               <option value="45-50">45-50</option>
+                               <option value="50-60">50-60</option>
+                               <option value="60-80">60-80</option>
+                               <option value="80-100">80-100</option>
+                               </select></td>
+                           <td><input name="patient[languagespeaking1]" id="languagespeaking1" type="text" placeholder="Preferred Language" /></td>
+                             <td><select name="patient[gender1]" id="gender1">
+                               <option value="">Select Gender</option>
+                               <option value="Male">Male</option>
+                               <option value="Female">Female</option>
+                               </select></td>
+                           <td><input name="patient[languagereading1]" id="languagereading1" type="text" placeholder="Language preference reading" /></td>
+                           <td><select name="patient[computer1]" id="computer1">
+                               <option value="">Own Computer</option>
+                               <option value="Yes">Yes</option>
+                               <option value="No">No</option>
+                               </select></td>
+                           <td><input name="patient[computerskills1]" id="computerskills1" type="text" placeholder="Computer Skills" /></td>
+                           <td><select name="patient[topicdiscussed1]" id="topicdiscussed1">
+                               <option value="">Select Topic</option>
+                               <option value="Diabetes">Diabetes</option>
+                               <option value="Heart Disease">Heart Disease</option>
+                               <option value="HIV">HIV</option>
+                               <option value="Asthma">Asthma</option>
+                               <option value="Stroke">Stroke</option>
+                               <option value="Excercise">Excercise</option>
+                               </select></td>
+                           <td>
+                               <select name="patient[timelength1]" id="timelength1">
+                               <option value="">Select time spent</option>
+                               <option value="10 MIN">10 MIN</option>
+                               <option value="20 MIN">20 MIN</option>
+                               <option value="30 MIN">30 MIN</option>
+                               <option value="40 MIN">40 MIN</option>
+                               <option value="1 HR">1 HR</option>
+                               </select></td>
+                           <td><input name="patient[notes1]" id="notes1" type="text" placeholder="Navigator notes/ observations" /></td>
+                           <td><input name="patient[noofparticipant1]" id="noofparticipant1" type="text" placeholder="Number of Participant Interactions" /></td>
+                           <td><select name="patient[noofinteraction1]" id="noofinteraction1">
+                               <option value="">Please select</option>
+                               <option value="1:1">1:1</option>
+                               <option value="Group">Group</option>
+                               </select></td>
+                          </tr>
+                          <tr>
+                          <td><select name="patient[location2]" id="location2">
+                           <option value="">Select Location</option>
+                           <option value="North">North</option>
+                           <option value="South">South</option>
+                           <option value="East">East</option>
+                           <option value="West">West</option>
+                           </select></td>
+                           <td><input name="patient[startdate2]" id="startdate2" type="text" placeholder="Start Date" data-provide='datepicker'	 /></td>
+                           <td><input name="patient[starttime2]" type="text" class="dateselect-time input-small timepicker" id="timepicker2" placeholder="Start Time" /></td>
+                           <td><input name="patient[initialcontact2]" id="initialcontact2" type="text" placeholder="Initial Contact" /></td>
+                           <td><select name="patient[agerange2]" id="agerange2">
+                               <option value="">Select age range</option>
+                               <option value="10-15">10-15</option>
+                               <option value="15-20">15-20</option>
+                               <option value="25-30">20-25</option>
+                               <option value="10-15">25-30</option>
+                               <option value="30-35">30-35</option>
+                               <option value="35-40">35-40</option>
+                               <option value="40-45">40-45</option>
+                               <option value="45-50">45-50</option>
+                               <option value="50-60">50-60</option>
+                               <option value="60-80">60-80</option>
+                               <option value="80-100">80-100</option>
+                               </select></td>
+                           <td><input name="patient[languagespeaking2]" id="languagespeaking2" type="text" placeholder="Preferred Language" /></td>
+                             <td><select name="patient[gender2]" id="gender2">
+                               <option value="">Select Gender</option>
+                               <option value="Male">Male</option>
+                               <option value="Female">Female</option>
+                               </select></td>
+                           <td><input name="patient[languagereading2]" id="languagereading2" type="text" placeholder="Language preference reading" /></td>
+                           <td><select name="patient[computer2]" id="computer2">
+                               <option value="">Own Computer</option>
+                               <option value="Yes">Yes</option>
+                               <option value="No">No</option>
+                               </select></td>
+                           <td><input name="patient[computerskills2]" id="computerskills2" type="text" placeholder="Computer Skills" /></td>
+                           <td><select name="patient[topicdiscussed2]" id="topicdiscussed2">
+                               <option value="">Select Topic</option>
+                               <option value="Diabetes">Diabetes</option>
+                               <option value="Heart Disease">Heart Disease</option>
+                               <option value="HIV">HIV</option>
+                               <option value="Asthma">Asthma</option>
+                               <option value="Stroke">Stroke</option>
+                               <option value="Excercise">Excercise</option>
+                               </select></td>
+                           <td>
+                               <select name="patient[timelength2]" id="timelength2">
+                               <option value="">Select time spent</option>
+                               <option value="10 MIN">10 MIN</option>
+                               <option value="20 MIN">20 MIN</option>
+                               <option value="30 MIN">30 MIN</option>
+                               <option value="40 MIN">40 MIN</option>
+                               <option value="1 HR">1 HR</option>
+                               </select></td>
+                           <td><input name="patient[notes2]" id="notes2" type="text" placeholder="Navigator notes/ observations" /></td>
+                           <td><input name="patient[noofparticipant2]" id="noofparticipant2" type="text" placeholder="Number of Participant Interactions" /></td>
+                           <td><select name="patient[noofinteraction2]" id="noofinteraction2">
+                               <option value="">Please select</option>
+                               <option value="1:1">1:1</option>
+                               <option value="Group">Group</option>
+                               </select></td>
+                            </tr>
+                            <tr>
+                                <td><select name="patient[location3]" id="location3">
+                               <option value="">Select Location</option>
+                               <option value="North">North</option>
+                               <option value="South">South</option>
+                               <option value="East">East</option>
+                               <option value="West">West</option>
+                               </select></td>
+                           <td><input name="patient[startdate3]" id="startdate3" type="text" placeholder="Start Date" data-provide='datepicker'	 /></td>
+                           <td><input name="patient[starttime3]" type="text" class="dateselect-time input-small timepicker" id="timepicker3" placeholder="Start Time" /></td>
+                           <td><input name="patient[initialcontact3]" id="initialcontact3" type="text" placeholder="Initial Contact" /></td>
+                           <td><select name="patient[agerange3]" id="agerange3">
+                               <option value="">Select age range</option>
+                               <option value="10-15">10-15</option>
+                               <option value="15-20">15-20</option>
+                               <option value="25-30">20-25</option>
+                               <option value="10-15">25-30</option>
+                               <option value="30-35">30-35</option>
+                               <option value="35-40">35-40</option>
+                               <option value="40-45">40-45</option>
+                               <option value="45-50">45-50</option>
+                               <option value="50-60">50-60</option>
+                               <option value="60-80">60-80</option>
+                               <option value="80-100">80-100</option>
+                               </select></td>
+                           <td><input name="patient[languagespeaking3]" id="languagespeaking3" type="text" placeholder="Preferred Language" /></td>
+                             <td><select name="patient[gender3]" id="gender3">
+                               <option value="">Select Gender</option>
+                               <option value="Male">Male</option>
+                               <option value="Female">Female</option>
+                               </select></td>
+                           <td><input name="patient[languagereading3]" id="languagereading3" type="text" placeholder="Language preference reading" /></td>
+                           <td><select name="patient[computer3]" id="computer3">
+                               <option value="">Own Computer</option>
+                               <option value="Yes">Yes</option>
+                               <option value="No">No</option>
+                               </select></td>
+                           <td><input name="patient[computerskills3]" id="computerskills3" type="text" placeholder="Computer Skills" /></td>
+                           <td><select name="patient[topicdiscussed3]" id="topicdiscussed3">
+                               <option value="">Select Topic</option>
+                               <option value="Diabetes">Diabetes</option>
+                               <option value="Heart Disease">Heart Disease</option>
+                               <option value="HIV">HIV</option>
+                               <option value="Asthma">Asthma</option>
+                               <option value="Stroke">Stroke</option>
+                               <option value="Excercise">Excercise</option>
+                               </select></td>
+                           <td>
+                               <select name="patient[timelength3]" id="timelength3">
+                               <option value="">Select time spent</option>
+                               <option value="10 MIN">10 MIN</option>
+                               <option value="20 MIN">20 MIN</option>
+                               <option value="30 MIN">30 MIN</option>
+                               <option value="40 MIN">40 MIN</option>
+                               <option value="1 HR">1 HR</option>
+                               </select></td>
+                           <td><input name="patient[notes3]" id="notes3" type="text" placeholder="Navigator notes/ observations" /></td>
+                           <td><input name="patient[noofparticipant3]" id="noofparticipant3" type="text" placeholder="Number of Participant Interactions" /></td>
+                           <td><select name="patient[noofinteraction3]" id="noofinteraction3">
+                               <option value="">Please select</option>
+                               <option value="1:1">1:1</option>
+                               <option value="Group">Group</option>
+                               </select></td>
+                          </tr>
+                          <tr>
+                            <td>
+                                <input name="submit" type="submit" value="Save All" class="btn btn-primary white right" />
+                            </td>
+                          </tr>
+                </table>
+              <% end %>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+    	</div>
+</div>
+</div>
+<br>
+ <%= link_to "Back", :back, class: "btn btn-default left" %>
