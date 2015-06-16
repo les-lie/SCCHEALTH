@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:update]
   
   def index
-    if @current_user.isadmin
+    if current_user[:isadmin]
       @patients = Patient.all.order(id: :desc).page(params[:page]).per(10)
     else
       @patients=Patient.where(userid: session[:user_id]).order(id: :desc).page(params[:page]).per(10)
@@ -46,7 +46,7 @@ class PatientsController < ApplicationController
   end
   
   def bulkcreate
-    if @current_user.isadmin
+    if @current_user[:isadmin]
       @patients = Patient.all.last(10).reverse
     else
       @patients=Patient.where(userid: session[:user_id]).last(10).reverse
