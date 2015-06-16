@@ -10,7 +10,7 @@
       });
     </script>
      <ul>
-            <input name="patient[userid]" type="hidden" value="<%= @current_user.id %>"/>
+            <input name="patient[userid]" type="hidden" value="<%= current_user[:id] %>"/>
             <li>
                 <%= f.label :start_date %>
                 <%

@@ -108,7 +108,7 @@
                             <!--  <td>Number of One-on-one interactions</td>-->
                           </tr>
                           <tr>
-                            <input name="patient[userid]" type="hidden" value="<%= @current_user.id %>"	 />
+                            <input name="patient[userid]" type="hidden" value="<%= current_user[:id] %>"	 />
                             <td><select name="patient[location1]" id="location1">
                                 <option value="">Select Location</option>
                                 <option value="North">North</option>

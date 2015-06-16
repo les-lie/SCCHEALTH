@@ -46,7 +46,7 @@ class PatientsController < ApplicationController
   end
   
   def bulkcreate
-    if @current_user[:isadmin]
+    if current_user[:isadmin]
       @patients = Patient.all.last(10).reverse
     else
       @patients=Patient.where(userid: session[:user_id]).last(10).reverse
