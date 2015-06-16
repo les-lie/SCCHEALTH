@@ -68,7 +68,7 @@ GEM
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
-    coffee-rails (4.1.0)
+    coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
     coffee-script (2.4.1)
@@ -102,9 +102,9 @@ GEM
       activesupport (>= 4.1.0)
     hike (1.2.3)
     i18n (0.7.0)
-    jbuilder (2.3.0)
-      activesupport (>= 3.0.0, < 5)
-      multi_json (~> 1.2)
+    jbuilder (1.5.3)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
     jquery-rails (4.0.3)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -239,13 +239,13 @@ DEPENDENCIES
   bootstrap-timepicker-rails-addon
   byebug
   capybara
-  coffee-rails (~> 4.1.0)
+  coffee-rails (~> 4.0.0)
   database_cleaner
   devise
   factory_girl_rails
   faker
   font_assets
-  jbuilder (~> 2.0)
+  jbuilder (~> 1.2)
   jquery-rails
   kaminari
   launchy
