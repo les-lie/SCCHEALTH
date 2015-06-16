@@ -72,3 +72,16 @@ dfhsdf hfsfshd fsdhfshdfsdh fhsdbfhsdhf sdfjsdfb hsdfhsdhfsjdfvbsdhfsdjfsdfjsd f
   Rendered layouts/_navigation.html.erb (1.9ms)
   Rendered layouts/_messages.html.erb (0.1ms)
 Completed 200 OK in 359ms (Views: 355.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/patients/new" for 127.0.0.1 at 2015-06-16 15:12:29 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PatientsController#new as HTML
+  Rendered shared/_error_messages.html.erb (1.7ms)
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered patients/_form.html.erb (304.7ms)
+  Rendered patients/new.html.erb within layouts/application (308.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.9ms)
+  Rendered layouts/_navigation.html.erb (10.4ms)
+  Rendered layouts/_messages.html.erb (0.5ms)
+Completed 200 OK in 4017ms (Views: 3988.2ms | ActiveRecord: 8.1ms)
