@@ -6,7 +6,8 @@
      <%= render partial: "shared/error_messages", locals: { model: @patient  } %>
     <script type="text/javascript">
       $(document).ready(function(){
-         $('#timepicker').timepicker();
+        $('.datepicker').datepicker();
+        jQuery('#timepicker').timepicker();
       });
     </script>
      <ul>
