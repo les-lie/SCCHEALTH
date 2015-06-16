@@ -5,6 +5,11 @@
     <title><%= content_for?(:title) ? yield(:title) : "Health Center" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Health Center" %>">
     <%= stylesheet_link_tag "application", media: "all"%>
+    
+
+
+
+
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
