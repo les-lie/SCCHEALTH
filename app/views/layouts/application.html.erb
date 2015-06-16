@@ -4,8 +4,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Health Center" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Health Center" %>">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag "application", media: "all"%>
+    <%= stylesheet_link_tag "common", media: "all"%>
+    <%= stylesheet_link_tag "bootstrap", media: "all"%>
+    <%= stylesheet_link_tag "framework_and_overrides", media: "all"%>
+    <%= javascript_include_tag "application" %>
+
+    
     <%= csrf_meta_tags %>
   </head>
   <body>
