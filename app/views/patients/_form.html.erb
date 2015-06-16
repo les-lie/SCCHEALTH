@@ -3,7 +3,7 @@
 <div class="login_after">
 
 <%= form_for(@patient) do |f| %>
-     <%= render partial: "shared/error_messages", locals: { model: @patient } %>
+     <%= render partial: "shared/error_messages", locals: { model: @patient  } %>
     <script type="text/javascript">
       $(document).ready(function(){
         $('.datepicker').datepicker();
