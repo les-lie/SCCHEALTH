@@ -51,8 +51,8 @@
         <th>Topic Discussed</th>
         <th>Time Spent</th>
         <th>Navigator notes/ observations</th>
-        <!--<th>Number of Participant Interactions</th>-->
-        <th>Number of Participant interactions</th>
+        <th>Number of Participant Interactions</th>
+        <th>Type of Interaction</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -111,10 +111,16 @@
                             <input name="patient[userid]" type="hidden" value="<%= current_user[:id] %>"	 />
                             <td><select name="patient[location1]" id="location1">
                                 <option value="">Select Location</option>
-                                <option value="North">North</option>
-                                <option value="South">South</option>
-                                <option value="East">East</option>
-                                <option value="West">West</option>
+                                <option value="Prieto">Prieto</option>
+                                <option value="Sengstacke">Sengstacke</option>
+                                <option value="A.C.T.S. OF F.A.I.T.H.">A.C.T.S. OF F.A.I.T.H.</option>
+                                <option value="Ann & Robert H. Lurie Children’s Hospital">Ann & Robert H. Lurie Children’s Hospital</option>
+                                <option value="Cook County Health and Hospitals System (CCHHS)">Cook County Health and Hospitals System (CCHHS)</option>
+                                <option value="Erie Family Health Center">Erie Family Health Center</option>
+                                <option value="Family Focus">Family Focus</option>
+                                <option value="Health Leads – Chicago">Health Leads – Chicago</option>
+                                <option value="Heartland Health Outreach">Heartland Health Outreach</option>
+                                <option value="Komed Holman Health Center">Komed Holman Health Center</option>
                                 </select></td>
                            <td><input name="patient[startdate1]" id="startdate1" type="text" placeholder="Start Date" data-provide='datepicker'	 /></td>
                            <td><input name="patient[starttime1]" type="text" class="dateselect-time input-small timepicker" id="timepicker1" placeholder="Start Time" /></td>
@@ -133,11 +139,21 @@
                                <option value="60-80">60-80</option>
                                <option value="80-100">80-100</option>
                                </select></td>
-                           <td><input name="patient[languagespeaking1]" id="languagespeaking1" type="text" placeholder="Preferred Language" /></td>
+                           <td>
+                              <select name="patient[languagespeaking1]" id="languagespeaking1">
+                               <option value="">Select Language</option>
+                               <option value="English">English</option>
+                               <option value="Spanish">Spanish</option>
+                               <option value="Polish">Polish</option>
+                               <option value="Vietnamese">Vietnamese</option>
+                               <option value="French/Creole">French/Creole</option>
+                              </select>
+                           </td>
                              <td><select name="patient[gender1]" id="gender1">
                                <option value="">Select Gender</option>
                                <option value="Male">Male</option>
                                <option value="Female">Female</option>
+                               <option value="Other">Other</option>
                                </select></td>
                            <td><input name="patient[languagereading1]" id="languagereading1" type="text" placeholder="Language preference reading" /></td>
                            <td><select name="patient[computer1]" id="computer1">
@@ -145,7 +161,13 @@
                                <option value="Yes">Yes</option>
                                <option value="No">No</option>
                                </select></td>
-                           <td><input name="patient[computerskills1]" id="computerskills1" type="text" placeholder="Computer Skills" /></td>
+                           <td><select name="patient[computerskills1]" id="computerskills1">
+                              <option value="">Please select</option>
+                              <option value="None">None</option>
+                              <option value="Beginner">Beginner</option>
+                              <option value="Intermediate">Intermediate</option>
+                              <option value="Advanced">Advanced</option>
+                           </select></td>
                            <td><select name="patient[topicdiscussed1]" id="topicdiscussed1">
                                <option value="">Select Topic</option>
                                <option value="Diabetes">Diabetes</option>
@@ -154,6 +176,7 @@
                                <option value="Asthma">Asthma</option>
                                <option value="Stroke">Stroke</option>
                                <option value="Excercise">Excercise</option>
+                               <option value="Hypertension and Nutrition">Hypertension and Nutrition</option>
                                </select></td>
                            <td>
                                <select name="patient[timelength1]" id="timelength1">
@@ -168,17 +191,23 @@
                            <td><input name="patient[noofparticipant1]" id="noofparticipant1" type="text" placeholder="Number of Participant Interactions" /></td>
                            <td><select name="patient[noofinteraction1]" id="noofinteraction1">
                                <option value="">Please select</option>
-                               <option value="1:1">1:1</option>
+                               <option value="Individual">Individual</option>
                                <option value="Group">Group</option>
                                </select></td>
                           </tr>
                           <tr>
                           <td><select name="patient[location2]" id="location2">
                            <option value="">Select Location</option>
-                           <option value="North">North</option>
-                           <option value="South">South</option>
-                           <option value="East">East</option>
-                           <option value="West">West</option>
+                           <option value="Prieto">Prieto</option>
+                           <option value="Sengstacke">Sengstacke</option>
+                           <option value="A.C.T.S. OF F.A.I.T.H.">A.C.T.S. OF F.A.I.T.H.</option>
+                           <option value="Ann & Robert H. Lurie Children’s Hospital">Ann & Robert H. Lurie Children’s Hospital</option>
+                           <option value="Cook County Health and Hospitals System (CCHHS)">Cook County Health and Hospitals System (CCHHS)</option>
+                           <option value="Erie Family Health Center">Erie Family Health Center</option>
+                           <option value="Family Focus">Family Focus</option>
+                           <option value="Health Leads – Chicago">Health Leads – Chicago</option>
+                           <option value="Heartland Health Outreach">Heartland Health Outreach</option>
+                           <option value="Komed Holman Health Center">Komed Holman Health Center</option>
                            </select></td>
                            <td><input name="patient[startdate2]" id="startdate2" type="text" placeholder="Start Date" data-provide='datepicker'	 /></td>
                            <td><input name="patient[starttime2]" type="text" class="dateselect-time input-small timepicker" id="timepicker2" placeholder="Start Time" /></td>
@@ -197,11 +226,21 @@
                                <option value="60-80">60-80</option>
                                <option value="80-100">80-100</option>
                                </select></td>
-                           <td><input name="patient[languagespeaking2]" id="languagespeaking2" type="text" placeholder="Preferred Language" /></td>
-                             <td><select name="patient[gender2]" id="gender2">
+                           <td>
+                               <select name="patient[languagespeaking2]" id="languagespeaking2">
+                               <option value="">Select Language</option>
+                               <option value="English">English</option>
+                               <option value="Spanish">Spanish</option>
+                               <option value="Polish">Polish</option>
+                               <option value="Vietnamese">Vietnamese</option>
+                               <option value="French/Creole">French/Creole</option>
+                              </select>
+                           </td>
+                           <td><select name="patient[gender2]" id="gender2">
                                <option value="">Select Gender</option>
                                <option value="Male">Male</option>
                                <option value="Female">Female</option>
+                               <option value="Other">Other</option>
                                </select></td>
                            <td><input name="patient[languagereading2]" id="languagereading2" type="text" placeholder="Language preference reading" /></td>
                            <td><select name="patient[computer2]" id="computer2">
@@ -209,7 +248,13 @@
                                <option value="Yes">Yes</option>
                                <option value="No">No</option>
                                </select></td>
-                           <td><input name="patient[computerskills2]" id="computerskills2" type="text" placeholder="Computer Skills" /></td>
+                           <td><select name="patient[computerskills2]" id="computerskills2">
+                               <option value="">Please select</option>
+                               <option value="None">None</option>
+                               <option value="Beginner">Beginner</option>
+                               <option value="Intermediate">Intermediate</option>
+                               <option value="Advanced">Advanced</option>
+                               </select></td>
                            <td><select name="patient[topicdiscussed2]" id="topicdiscussed2">
                                <option value="">Select Topic</option>
                                <option value="Diabetes">Diabetes</option>
@@ -218,6 +263,7 @@
                                <option value="Asthma">Asthma</option>
                                <option value="Stroke">Stroke</option>
                                <option value="Excercise">Excercise</option>
+                               <option value="Hypertension and Nutrition">Hypertension and Nutrition</option>
                                </select></td>
                            <td>
                                <select name="patient[timelength2]" id="timelength2">
@@ -232,17 +278,23 @@
                            <td><input name="patient[noofparticipant2]" id="noofparticipant2" type="text" placeholder="Number of Participant Interactions" /></td>
                            <td><select name="patient[noofinteraction2]" id="noofinteraction2">
                                <option value="">Please select</option>
-                               <option value="1:1">1:1</option>
+                               <option value="Individual">Individual</option>
                                <option value="Group">Group</option>
                                </select></td>
                             </tr>
                             <tr>
                                 <td><select name="patient[location3]" id="location3">
-                               <option value="">Select Location</option>
-                               <option value="North">North</option>
-                               <option value="South">South</option>
-                               <option value="East">East</option>
-                               <option value="West">West</option>
+                                <option value="">Select Location</option>
+                                <option value="Prieto">Prieto</option>
+                                <option value="Sengstacke">Sengstacke</option>
+                                <option value="A.C.T.S. OF F.A.I.T.H.">A.C.T.S. OF F.A.I.T.H.</option>
+                                <option value="Ann & Robert H. Lurie Children’s Hospital">Ann & Robert H. Lurie Children’s Hospital</option>
+                                <option value="Cook County Health and Hospitals System (CCHHS)">Cook County Health and Hospitals System (CCHHS)</option>
+                                <option value="Erie Family Health Center">Erie Family Health Center</option>
+                                <option value="Family Focus">Family Focus</option>
+                                <option value="Health Leads – Chicago">Health Leads – Chicago</option>
+                                <option value="Heartland Health Outreach">Heartland Health Outreach</option>
+                                <option value="Komed Holman Health Center">Komed Holman Health Center</option>
                                </select></td>
                            <td><input name="patient[startdate3]" id="startdate3" type="text" placeholder="Start Date" data-provide='datepicker'	 /></td>
                            <td><input name="patient[starttime3]" type="text" class="dateselect-time input-small timepicker" id="timepicker3" placeholder="Start Time" /></td>
@@ -261,11 +313,21 @@
                                <option value="60-80">60-80</option>
                                <option value="80-100">80-100</option>
                                </select></td>
-                           <td><input name="patient[languagespeaking3]" id="languagespeaking3" type="text" placeholder="Preferred Language" /></td>
+                           <td>
+                               <select name="patient[languagespeaking3]" id="languagespeaking3">
+                               <option value="">Select Language</option>
+                               <option value="English">English</option>
+                               <option value="Spanish">Spanish</option>
+                               <option value="Polish">Polish</option>
+                               <option value="Vietnamese">Vietnamese</option>
+                               <option value="French/Creole">French/Creole</option>
+                              </select>
+                           </td>
                              <td><select name="patient[gender3]" id="gender3">
                                <option value="">Select Gender</option>
                                <option value="Male">Male</option>
                                <option value="Female">Female</option>
+                               <option value="Other">Other</option>
                                </select></td>
                            <td><input name="patient[languagereading3]" id="languagereading3" type="text" placeholder="Language preference reading" /></td>
                            <td><select name="patient[computer3]" id="computer3">
@@ -273,7 +335,13 @@
                                <option value="Yes">Yes</option>
                                <option value="No">No</option>
                                </select></td>
-                           <td><input name="patient[computerskills3]" id="computerskills3" type="text" placeholder="Computer Skills" /></td>
+                          <td><select name="patient[computerskills3]" id="computerskills3">
+                          <option value="">Please select</option>
+                          <option value="None">None</option>
+                          <option value="Beginner">Beginner</option>
+                          <option value="Intermediate">Intermediate</option>
+                          <option value="Advanced">Advanced</option>
+                          </select></td>
                            <td><select name="patient[topicdiscussed3]" id="topicdiscussed3">
                                <option value="">Select Topic</option>
                                <option value="Diabetes">Diabetes</option>
@@ -282,6 +350,7 @@
                                <option value="Asthma">Asthma</option>
                                <option value="Stroke">Stroke</option>
                                <option value="Excercise">Excercise</option>
+                               <option value="Hypertension and Nutrition">Hypertension and Nutrition</option>
                                </select></td>
                            <td>
                                <select name="patient[timelength3]" id="timelength3">
@@ -296,7 +365,7 @@
                            <td><input name="patient[noofparticipant3]" id="noofparticipant3" type="text" placeholder="Number of Participant Interactions" /></td>
                            <td><select name="patient[noofinteraction3]" id="noofinteraction3">
                                <option value="">Please select</option>
-                               <option value="1:1">1:1</option>
+                               <option value="Individual">Individual</option>
                                <option value="Group">Group</option>
                                </select></td>
                           </tr>

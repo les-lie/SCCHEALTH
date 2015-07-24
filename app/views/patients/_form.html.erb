@@ -32,7 +32,7 @@
             </li>
             <li>
               <%= f.label :preferred_language %>
-              <%= f.text_field :languagespeaking %>
+              <%= f.select(:languagespeaking, options_for_select(['English','Spanish','Polish', 'Vietnamese', 'French/Creole']  , @patient.languagespeaking )) %>
             </li>
             <li>
                 <%= f.label :age_range %>
@@ -41,24 +41,23 @@
             
             <li>
               <%= f.label :gender %>
-              <%= f.select(:gender, options_for_select(['Male', 'Female'], @patient.gender )) %>
+              <%= f.select(:gender, options_for_select(['Male', 'Female','Other'], @patient.gender )) %>
             </li>
             <li>
               <%= f.label :Language_preference_reading %>
               <%= f.text_field :languagereading %>
             </li>
-             <li>
+            <li>
               <%= f.label :Computer_Skills %>
-              <%= f.text_field :computerskills %>
+              <%= f.select(:computerskills, options_for_select(['None', 'Beginner', 'Intermediate', 'Advanced'], @patient.computerskills )) %>
             </li>
             <li>
               <%= f.label :own_computer? %>
               <%= f.select(:computer, options_for_select(['Yes', 'No'], @patient.computer )) %>
             </li>
-           
             <li>
               <%= f.label :topics_discussed %>
-              <%= f.select(:topicdiscussed, options_for_select(['Diabetes', 'Heart Disease', 'HIV', 'Asthma', 'Stroke', 'Excercise'], @patient.topicdiscussed )) %>
+              <%= f.select(:topicdiscussed, options_for_select(['Diabetes', 'Heart Disease', 'HIV', 'Asthma', 'Stroke', 'Excercise', 'Hypertension and Nutrition'], @patient.topicdiscussed )) %>
             </li>
             <li>
               <%= f.label :Navigator_notes_OR_observations %>
@@ -75,11 +74,11 @@
           
             <li>
               <%= f.label :location %>
-              <%= f.select(:location, options_for_select(['North', 'South', 'East', 'West'], @patient.location )) %>
+              <%= f.select(:location, options_for_select(["Prieto", "Sengstacke", "A.C.T.S. OF F.A.I.T.H.", "Ann & Robert H. Lurie Children’s Hospital","Cook County Health and Hospitals System (CCHHS)", "Erie Family Health Center", "Family Focus", "Health Leads – Chicago", "Heartland Health Outreach", "Komed Holman Health Center"], @patient.location )) %>
             </li>
             <li>
               <%= f.label :Number_of_One_on_one_interactions %>
-              <%= f.select(:noofinteraction, options_for_select(['1:1', 'Group'], @patient.noofinteraction )) %>
+              <%= f.select(:noofinteraction, options_for_select(['Individual', 'Group'], @patient.noofinteraction )) %>
             </li>
             
             <li>

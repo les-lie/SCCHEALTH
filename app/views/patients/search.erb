@@ -35,15 +35,15 @@
         <tr>
           <td>
               Gender
-              <%= select_tag "gender", options_for_select(['Male', 'Female'], params[:gender]), :include_blank => 'ALL' %>
+              <%= select_tag "gender", options_for_select(['Male', 'Female', 'Other'], params[:gender]), :include_blank => 'ALL' %>
           </td>
           <td>
               Location
-              <%= select_tag "location", options_for_select(['North', 'South', 'East', 'West'], params[:location]), :include_blank => 'ALL' %>
+              <%= select_tag "location", options_for_select(["Prieto", "Sengstacke", "A.C.T.S. OF F.A.I.T.H.", "Ann & Robert H. Lurie Children’s Hospital","Cook County Health and Hospitals System (CCHHS)", "Erie Family Health Center", "Family Focus", "Health Leads – Chicago", "Heartland Health Outreach", "Komed Holman Health Center"], params[:location]), :include_blank => 'ALL' %>
           </td>
           <td>
               Topic
-              <%= select_tag "topic", options_for_select(['Diabetes', 'Heart Disease', 'HIV', 'Asthma', 'Stroke', 'Excercise'], params[:topic]), :include_blank => 'ALL' %>
+              <%= select_tag "topic", options_for_select(['Diabetes', 'Heart Disease', 'HIV', 'Asthma', 'Stroke', 'Excercise', 'Hypertension and Nutrition'], params[:topic]), :include_blank => 'ALL' %>
           </td>
           <td>
               Duration
@@ -55,7 +55,7 @@
           </td>
           <td>
               Type </br>
-              <%= select_tag "type", options_for_select(['Group', '1:1'], params[:type]), :include_blank => 'ALL' %>
+              <%= select_tag "type", options_for_select(['Group', 'Individual'], params[:type]), :include_blank => 'ALL' %>
           </td>
           <td>
               <%= submit_tag "Search", :name => 'search' %></p>
