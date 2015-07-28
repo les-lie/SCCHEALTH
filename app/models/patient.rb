@@ -1,6 +1,6 @@
 class Patient < ActiveRecord::Base
 
- validates :startdate, presence: true
+  validates :startdate, presence: true
   validates :starttime, presence: true
   validates :initialcontact, presence: true
   validates :agerange, presence: true

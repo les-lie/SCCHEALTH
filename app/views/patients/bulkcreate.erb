@@ -40,9 +40,11 @@
       <tr>
         <th>ID</th>
         <th>Location</th>
-        <th>Start Date</th>
-        <th>Start Time</th>
         <th>Initial Contact</th>
+        <th>Start Time</th>
+        <th>Group Id</th>
+        <th>No of Visits</th>
+       <!-- <th>Initial Contact</th>-->
 	<th>Age Range</th>
 	<th>Preferred Language</th>
 	<th>Language preference reading</th>
@@ -63,7 +65,9 @@
           <td><%= patient.location %></td>
           <td><%= formatted_date(patient.startdate) %></td>
           <td><%= formatted_time(patient.starttime) %></td>
-	  <td><%= patient.initialcontact %></td>
+          <td><%= patient.groupid %></td>
+          <td><%= patient.noofvisits %></td>
+	 <!-- <td><%= patient.initialcontact %></td> -->
 	  <td><%= patient.agerange %></td>
 	  <td><%= patient.gender %></td>
           <td><%= patient.languagespeaking %></td>
@@ -92,9 +96,11 @@
                 <table>
                           <tr>
                               <td>Location</td>
-                              <td>Start Date</td>
-                              <td>Start Time</td>
                               <td>Initial Contact</td>
+                              <td>Start Time</td>
+                              <td>Group Id</td>
+                              <td>No Of Visits</td>
+                              <!--<td>Initial Contact</td>-->
                               <td>Age Range</td>
                               <td>Preferred Language</td>
                               <td>Gender</td>
@@ -105,7 +111,7 @@
                               <td>Time Spent</td>
                               <td>Navigator notes/ observations</td>
                               <td>Number of Participant Interactions</td>
-                            <!--  <td>Number of One-on-one interactions</td>-->
+                             <td>Type of interaction</td>
                           </tr>
                           <tr>
                             <input name="patient[userid]" type="hidden" value="<%= current_user[:id] %>"	 />
@@ -124,7 +130,17 @@
                                 </select></td>
                            <td><input name="patient[startdate1]" id="startdate1" type="text" placeholder="Start Date" data-provide='datepicker'	 /></td>
                            <td><input name="patient[starttime1]" type="text" class="dateselect-time input-small timepicker" id="timepicker1" placeholder="Start Time" /></td>
-                           <td><input name="patient[initialcontact1]" id="initialcontact1" type="text" placeholder="Initial Contact" /></td>
+                           <td><input name="patient[groupid1]" id="groupid1" type="text" placeholder="Group Id" /></td>
+                           <td><select name="patient[noofvisits1]" id="noofvisits1">
+                               <option value="Initial">Initial</option>
+                               <option value="15-20">1-2</option>
+                               <option value="25-30">3-5</option>
+                               <option value="10-15">6-10</option>
+                               <option value="30-35">10+</option>
+                               </select></td>
+                           
+                           <!--<td><input name="patient[initialcontact1]" id="initialcontact1" type="text" placeholder="Initial Contact" /></td>
+                           -->
                            <td><select name="patient[agerange1]" id="agerange1">
                                <option value="">Select age range</option>
                                <option value="10-15">10-15</option>
@@ -211,7 +227,16 @@
                            </select></td>
                            <td><input name="patient[startdate2]" id="startdate2" type="text" placeholder="Start Date" data-provide='datepicker'	 /></td>
                            <td><input name="patient[starttime2]" type="text" class="dateselect-time input-small timepicker" id="timepicker2" placeholder="Start Time" /></td>
-                           <td><input name="patient[initialcontact2]" id="initialcontact2" type="text" placeholder="Initial Contact" /></td>
+                           <td><input name="patient[groupid2]" id="groupid2" type="text" placeholder="Group Id" /></td>
+                           <td><select name="patient[noofvisits2]" id="noofvisits2">
+                               <option value="Initial">Initial</option>
+                               <option value="15-20">1-2</option>
+                               <option value="25-30">3-5</option>
+                               <option value="10-15">6-10</option>
+                               <option value="30-35">10+</option>
+                               </select></td>
+                           <!--<td><input name="patient[initialcontact2]" id="initialcontact2" type="text" placeholder="Initial Contact" /></td>
+                           -->
                            <td><select name="patient[agerange2]" id="agerange2">
                                <option value="">Select age range</option>
                                <option value="10-15">10-15</option>
@@ -298,7 +323,16 @@
                                </select></td>
                            <td><input name="patient[startdate3]" id="startdate3" type="text" placeholder="Start Date" data-provide='datepicker'	 /></td>
                            <td><input name="patient[starttime3]" type="text" class="dateselect-time input-small timepicker" id="timepicker3" placeholder="Start Time" /></td>
-                           <td><input name="patient[initialcontact3]" id="initialcontact3" type="text" placeholder="Initial Contact" /></td>
+                           <td><input name="patient[groupid3]" id="groupid3" type="text" placeholder="Group Id" /></td>
+                           <td><select name="patient[noofvisits3]" id="noofvisits3">
+                               <option value="Initial">Initial</option>
+                               <option value="15-20">1-2</option>
+                               <option value="25-30">3-5</option>
+                               <option value="10-15">6-10</option>
+                               <option value="30-35">10+</option>
+                               </select></td>
+                           <!--<td><input name="patient[initialcontact3]" id="initialcontact3" type="text" placeholder="Initial Contact" /></td>
+                           -->
                            <td><select name="patient[agerange3]" id="agerange3">
                                <option value="">Select age range</option>
                                <option value="10-15">10-15</option>

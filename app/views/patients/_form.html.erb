@@ -24,12 +24,21 @@
                 <%= text_field_tag 'patient[startdate]', form_date , "data-provide"=>"datepicker" %>
             </li>
             <li>
-                <%= f.label :start_time %>
+                <%= f.label :initial_contact %>
                 <%= f.text_field :starttime, id: "timepicker" %>
-               <li>
+            </li>
+            <li>
+                <%= f.label :group_id %>
+                <%= f.text_field :groupid %>
+            </li>
+            <li>
+              <%= f.label :no_of_visits %>
+              <%= f.select(:noofvisits, options_for_select(['Initial', '1-2', '3-5', '6-10','10+'], @patient.noofvisits )) %>
+            </li>
+            <!--<li>
                 <%= f.label :initial_contact %>
                 <%= f.text_field :initialcontact %>
-            </li>
+            </li>-->
             <li>
               <%= f.label :preferred_language %>
               <%= f.select(:languagespeaking, options_for_select(['English','Spanish','Polish', 'Vietnamese', 'French/Creole']  , @patient.languagespeaking )) %>

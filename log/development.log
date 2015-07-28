@@ -897,3 +897,895 @@ Processing by PatientsController#show as HTML
   Rendered layouts/_navigation.html.erb (2.8ms)
   Rendered layouts/_messages.html.erb (0.1ms)
 Completed 200 OK in 360ms (Views: 339.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-27 14:08:49 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (31.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (628.8ms)
+  Rendered layouts/_navigation_links.html.erb (1.2ms)
+  Rendered layouts/_navigation.html.erb (71.2ms)
+  Rendered layouts/_messages.html.erb (0.9ms)
+Completed 200 OK in 5969ms (Views: 5856.5ms | ActiveRecord: 81.2ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-07-27 14:08:58 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ddSnrqi82K1wu0mPyubikr+xi5MQReD/aUDUnIHEc+yUuLDNw3iUUFHyxj5aIri2qP4b3dEmd3LkWASq4mVlTQ==", "user"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[35mUser Load (75.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["email", "admin@admin.com"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (31.3ms)[0m  UPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5  [["last_sign_in_at", "2015-07-24 09:23:00.040824"], ["current_sign_in_at", "2015-07-27 08:38:59.268795"], ["sign_in_count", 19], ["updated_at", "2015-07-27 08:38:59.270700"], ["id", 1]]
+  [1m[36m (111.9ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 539ms (ActiveRecord: 218.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-27 14:08:59 +0530
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (37.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (2.0ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 399ms (Views: 397.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 14:09:11 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)[0m  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.erb (2.5ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 296ms (Views: 292.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2015-07-27 14:09:13 +0530
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  [1m[36mPatient Load (12.0ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (37.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 369ms (Views: 350.5ms | ActiveRecord: 14.7ms)
+
+
+Started GET "/allrecords" for 127.0.0.1 at 2015-07-27 14:09:14 +0530
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.8ms)[0m  SELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "patients"[0m
+  Rendered patients/index.html.erb within layouts/application (9.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 310ms (Views: 308.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2015-07-27 14:09:15 +0530
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (2.2ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 333ms (Views: 330.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/allrecords" for 127.0.0.1 at 2015-07-27 14:09:17 +0530
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.7ms)[0m  SELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "patients"[0m
+  Rendered patients/index.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 301ms (Views: 299.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2015-07-27 14:09:19 +0530
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 306ms (Views: 303.7ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/users" for 127.0.0.1 at 2015-07-27 14:09:22 +0530
+Processing by Devise::RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DuQVAgUsj7akjiNclwslfZBj2MiBSiY6VQB68ePS73I1EqfKJ9vsJTCsVahva6MHqQCIn+9dzqgG2sbWiEokcA==", "user"=>{"name"=>"admin user", "email"=>"admin@admin.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "current_password"=>"[FILTERED]"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (5.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 440ms (Views: 308.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2015-07-27 14:09:26 +0530
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  [1m[35mPatient Load (1.1ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')[0m
+  Rendered patients/search.erb within layouts/application (10.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 332ms (Views: 329.5ms | ActiveRecord: 1.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddGroupidToPatients (20150727100423)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (48.1ms)[0m  [1mALTER TABLE "patients" ADD "groupid" character varying[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150727100423"]]
+  [1m[36m (18.9ms)[0m  [1mCOMMIT[0m
+Migrating to AddNoofvisitsToPatients (20150727100641)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mALTER TABLE "patients" ADD "noofvisits" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150727100641"]]
+  [1m[36m (15.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'patients'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.2ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=Sengstacke&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 17:21:07 +0530
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"Sengstacke", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[36mPatient Load (18.3ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (36.9ms)
+  Rendered layouts/_navigation_links.html.erb (1.5ms)
+  Rendered layouts/_navigation.html.erb (4.8ms)
+  Rendered layouts/_messages.html.erb (0.9ms)
+Completed 200 OK in 1011ms (Views: 958.2ms | ActiveRecord: 20.3ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=A.C.T.S.+OF+F.A.I.T.H.&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 17:21:16 +0530
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"A.C.T.S. OF F.A.I.T.H.", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[35mPatient Load (0.8ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%A.C.T.S. OF F.A.I.T.H.%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%A.C.T.S. OF F.A.I.T.H.%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')[0m
+  Rendered patients/search.erb within layouts/application (5.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 354ms (Views: 351.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2015-07-27 17:21:24 +0530
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (462.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.7ms)
+  Rendered layouts/_navigation.html.erb (2.2ms)
+  Rendered layouts/_messages.html.erb (0.4ms)
+Completed 200 OK in 771ms (Views: 759.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/allrecords" for 127.0.0.1 at 2015-07-27 17:21:25 +0530
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.8ms)[0m  SELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "patients"[0m
+  Rendered patients/index.html.erb within layouts/application (27.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 347ms (Views: 344.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2015-07-27 17:21:26 +0530
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  [1m[36mPatient Load (0.8ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (6.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 295ms (Views: 293.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 17:21:27 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)[0m  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 328ms (Views: 323.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2015-07-27 17:21:28 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  [1m[36mPatient Load (0.8ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (5.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 330ms (Views: 327.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/allrecords" for 127.0.0.1 at 2015-07-27 17:21:29 +0530
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#index as HTML
+  [1m[35mPatient Load (0.7ms)[0m  SELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "patients"[0m
+  Rendered patients/index.html.erb within layouts/application (8.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 322ms (Views: 320.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/bulkcreate" for 127.0.0.1 at 2015-07-27 17:21:35 +0530
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#bulkcreate as HTML
+  [1m[36mPatient Load (0.7ms)[0m  [1mSELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 10[0m
+  Rendered patients/bulkcreate.erb within layouts/application (6.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 319ms (Views: 316.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/bulkcreate" for 127.0.0.1 at 2015-07-27 17:31:49 +0530
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#bulkcreate as HTML
+  [1m[36mPatient Load (0.4ms)[0m  [1mSELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 10[0m
+  Rendered patients/bulkcreate.erb within layouts/application (5.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 319ms (Views: 317.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/bulkcreate" for 127.0.0.1 at 2015-07-27 17:33:00 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#bulkcreate as HTML
+  [1m[36mPatient Load (0.5ms)[0m  [1mSELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 10[0m
+  Rendered patients/bulkcreate.erb within layouts/application (5.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 324ms (Views: 322.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/export.csv" for 127.0.0.1 at 2015-07-27 18:21:29 +0530
+  [1m[35mUser Load (46.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#export as CSV
+  [1m[36mPatient Load (17.0ms)[0m  [1mSELECT "patients".* FROM "patients"  ORDER BY "patients"."id" DESC[0m
+  Rendered text template (0.0ms)
+Sent data  (38.9ms)
+Completed 200 OK in 155ms (Views: 38.8ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=Sengstacke&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:25:02 +0530
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"Sengstacke", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[36mPatient Load (35.9ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (56.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (20.2ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 844ms (Views: 806.8ms | ActiveRecord: 36.6ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=Sengstacke&topic=&duration=10+MIN&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:25:43 +0530
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"Sengstacke", "topic"=>"", "duration"=>"10 MIN", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[35mPatient Load (0.8ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (1.2ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')[0m
+  Rendered patients/search.erb within layouts/application (6.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 323ms (Views: 319.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=Sengstacke&topic=&duration=10+MIN&computer=Yes&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:25:49 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"Sengstacke", "topic"=>"", "duration"=>"10 MIN", "computer"=>"Yes", "type"=>"", "search"=>"Search"}
+  [1m[36mPatient Load (0.8ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (4.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 323ms (Views: 320.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=Sengstacke&topic=&duration=10+MIN&computer=Yes&type=Individual&search=Search" for 127.0.0.1 at 2015-07-27 18:25:54 +0530
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"Sengstacke", "topic"=>"", "duration"=>"10 MIN", "computer"=>"Yes", "type"=>"Individual", "search"=>"Search"}
+  [1m[35mPatient Load (1.0ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')[0m
+  Rendered patients/search.erb within layouts/application (5.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 316ms (Views: 313.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=Sengstacke&topic=HIV&duration=10+MIN&computer=Yes&type=Individual&search=Search" for 127.0.0.1 at 2015-07-27 18:25:56 +0530
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"Sengstacke", "topic"=>"HIV", "duration"=>"10 MIN", "computer"=>"Yes", "type"=>"Individual", "search"=>"Search"}
+  [1m[36mPatient Load (0.8ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%HIV%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Sengstacke%' AND topicdiscussed LIKE '%HIV%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 327ms (Views: 324.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=Cook+County+Health+and+Hospitals+System+%28CCHHS%29&topic=HIV&duration=10+MIN&computer=Yes&type=Individual&search=Search" for 127.0.0.1 at 2015-07-27 18:25:59 +0530
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"Cook County Health and Hospitals System (CCHHS)", "topic"=>"HIV", "duration"=>"10 MIN", "computer"=>"Yes", "type"=>"Individual", "search"=>"Search"}
+  [1m[35mPatient Load (0.9ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Cook County Health and Hospitals System (CCHHS)%' AND topicdiscussed LIKE '%HIV%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%Cook County Health and Hospitals System (CCHHS)%' AND topicdiscussed LIKE '%HIV%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')[0m
+  Rendered patients/search.erb within layouts/application (5.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 312ms (Views: 309.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=Other&location=Cook+County+Health+and+Hospitals+System+%28CCHHS%29&topic=HIV&duration=10+MIN&computer=Yes&type=Individual&search=Search" for 127.0.0.1 at 2015-07-27 18:26:03 +0530
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"Other", "location"=>"Cook County Health and Hospitals System (CCHHS)", "topic"=>"HIV", "duration"=>"10 MIN", "computer"=>"Yes", "type"=>"Individual", "search"=>"Search"}
+  [1m[36mPatient Load (0.8ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%Other%' AND  location LIKE '%Cook County Health and Hospitals System (CCHHS)%' AND topicdiscussed LIKE '%HIV%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%Other%' AND  location LIKE '%Cook County Health and Hospitals System (CCHHS)%' AND topicdiscussed LIKE '%HIV%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (6.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 338ms (Views: 335.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=07%2F01%2F2015&todate=07%2F21%2F2015&gender=Other&location=Cook+County+Health+and+Hospitals+System+%28CCHHS%29&topic=HIV&duration=10+MIN&computer=Yes&type=Individual&search=Search" for 127.0.0.1 at 2015-07-27 18:26:16 +0530
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"07/01/2015", "todate"=>"07/21/2015", "gender"=>"Other", "location"=>"Cook County Health and Hospitals System (CCHHS)", "topic"=>"HIV", "duration"=>"10 MIN", "computer"=>"Yes", "type"=>"Individual", "search"=>"Search"}
+  [1m[35mPatient Load (0.8ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%Other%' AND  location LIKE '%Cook County Health and Hospitals System (CCHHS)%' AND topicdiscussed LIKE '%HIV%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%Other%' AND  location LIKE '%Cook County Health and Hospitals System (CCHHS)%' AND topicdiscussed LIKE '%HIV%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%Individual%' AND computer LIKE '%Yes%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')[0m
+  Rendered patients/search.erb within layouts/application (5.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (2.1ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 339ms (Views: 336.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=07%2F01%2F2015&todate=07%2F21%2F2015&gender=&location=&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:26:28 +0530
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"07/01/2015", "todate"=>"07/21/2015", "gender"=>"", "location"=>"", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[36mPatient Load (0.7ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')
+  Rendered patients/search.erb within layouts/application (4.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 322ms (Views: 319.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=07%2F01%2F2015&todate=07%2F21%2F2015&gender=Other&location=&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:26:40 +0530
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"07/01/2015", "todate"=>"07/21/2015", "gender"=>"Other", "location"=>"", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[35mPatient Load (0.9ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%Other%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%Other%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')[0m
+  Rendered patients/search.erb within layouts/application (7.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 353ms (Views: 350.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=07%2F01%2F2015&todate=07%2F21%2F2015&gender=Female&location=&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:26:45 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"07/01/2015", "todate"=>"07/21/2015", "gender"=>"Female", "location"=>"", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[36mPatient Load (0.7ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%Female%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (1.0ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%Female%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')
+  Rendered patients/search.erb within layouts/application (6.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 331ms (Views: 328.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=07%2F01%2F2015&todate=07%2F21%2F2015&gender=Male&location=&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:26:49 +0530
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"07/01/2015", "todate"=>"07/21/2015", "gender"=>"Male", "location"=>"", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[35mPatient Load (0.7ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%Male%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%Male%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')[0m
+  Rendered patients/search.erb within layouts/application (5.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 329ms (Views: 326.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=07%2F01%2F2015&todate=07%2F21%2F2015&gender=&location=&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:26:53 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"07/01/2015", "todate"=>"07/21/2015", "gender"=>"", "location"=>"", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[36mPatient Load (0.9ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')
+  Rendered patients/search.erb within layouts/application (5.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 335ms (Views: 332.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=07%2F01%2F2015&todate=07%2F21%2F2015&gender=&location=&topic=&duration=10+MIN&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:27:17 +0530
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"07/01/2015", "todate"=>"07/21/2015", "gender"=>"", "location"=>"", "topic"=>"", "duration"=>"10 MIN", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[35mPatient Load (0.8ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%10 MIN%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%2015-07-01%' AND startdate <= '%2015-07-21%')[0m
+  Rendered patients/search.erb within layouts/application (6.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 344ms (Views: 341.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:27:34 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[36mPatient Load (1.0ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.9ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (7.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.8ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 327ms (Views: 324.2ms | ActiveRecord: 1.9ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/bootstrap.css.map"):
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.1.2) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  quiet_assets (1.1.0) lib/quiet_assets.rb:27:in `call_with_quiet_assets'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.1) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.1) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.1) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.1) lib/rack/lock.rb:17:in `call'
+  rack (1.6.1) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.1) lib/rack/handler/webrick.rb:89:in `service'
+  /usr/local/lib/ruby/2.2.0/webrick/httpserver.rb:138:in `service'
+  /usr/local/lib/ruby/2.2.0/webrick/httpserver.rb:94:in `run'
+  /usr/local/lib/ruby/2.2.0/webrick/server.rb:294:in `block in start_thread'
+
+
+
+
+Started GET "/search?utf8=%E2%9C%93&fromdate=&todate=&gender=&location=&topic=&duration=&computer=&type=&search=Search" for 127.0.0.1 at 2015-07-27 18:30:47 +0530
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  Parameters: {"utf8"=>"✓", "fromdate"=>"", "todate"=>"", "gender"=>"", "location"=>"", "topic"=>"", "duration"=>"", "computer"=>"", "type"=>"", "search"=>"Search"}
+  [1m[35mPatient Load (0.8ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.8ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')[0m
+  Rendered patients/search.erb within layouts/application (5.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 320ms (Views: 317.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:30:53 +0530
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0[0m  [["id", 1]]
+  [1m[35m (22.6ms)[0m  SELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (28.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 374ms (Views: 347.5ms | ActiveRecord: 23.5ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2015-07-27 18:30:55 +0530
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  [1m[35mPatient Load (0.9ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')[0m
+  Rendered patients/search.erb within layouts/application (5.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 318ms (Views: 316.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2015-07-27 18:30:56 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  [1m[36mPatient Load (0.8ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (5.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.7ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 314ms (Views: 311.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:30:57 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)[0m  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 344ms (Views: 339.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/allrecords" for 127.0.0.1 at 2015-07-27 18:30:58 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#index as HTML
+  [1m[36mPatient Load (0.6ms)[0m  [1mSELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 314ms (Views: 312.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2015-07-27 18:31:00 +0530
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 318ms (Views: 315.9ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/users" for 127.0.0.1 at 2015-07-27 18:31:03 +0530
+Processing by Devise::RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"77kgpiOx/h2lnh4kNzI5gjp55LgpbSdIQgAz2jjIqWvUT5JuAUadjjG8aNDPUr/4Axq070d6z9oR2o/9U1BiaQ==", "user"=>{"name"=>"admin user", "email"=>"admin@admin.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "current_password"=>"[FILTERED]"}, "commit"=>"Update"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.3ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 709ms (Views: 296.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:56:22 +0530
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 319ms (Views: 316.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2015-07-27 18:56:25 +0530
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by PatientsController#search as HTML
+  [1m[35mPatient Load (0.7ms)[0m  SELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')[0m
+  Rendered patients/search.erb within layouts/application (5.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 315ms (Views: 313.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/allrecords" for 127.0.0.1 at 2015-07-27 18:56:29 +0530
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#index as HTML
+  [1m[36mPatient Load (0.6ms)[0m  [1mSELECT  "patients".* FROM "patients"  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "patients"
+  Rendered patients/index.html.erb within layouts/application (5.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 319ms (Views: 317.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2015-07-27 18:56:31 +0530
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 311ms (Views: 308.9ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2015-07-27 18:56:34 +0530
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"ECMvtwV4agWmtRU+wExxXCJaeXjj/qIbWU1CraPOc2or1Z1/J48JljKXY8o4LPcmGzkpL43pSokKl/6KyFa4aA=="}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 67ms (ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-27 18:56:34 +0530
+Processing by Devise::SessionsController#new as HTML
+  Rendered devise/sessions/new.html.erb within layouts/application (83.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.2ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 427ms (Views: 426.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2015-07-27 18:56:36 +0530
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ArWDlrc57yE4EklVVgLzwBIsBgGfIwAtYZZ0CY2vR1e0GvKWMBtNhOsgxhVtqe/h2f0m9/6ZLavS1mVBoElOTg==", "user"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Sign in"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."email" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["email", "admin@admin.com"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (20.2ms)[0m  [1mUPDATE "users" SET "last_sign_in_at" = $1, "current_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["last_sign_in_at", "2015-07-27 08:38:59.268795"], ["current_sign_in_at", "2015-07-27 13:26:36.871800"], ["sign_in_count", 20], ["updated_at", "2015-07-27 13:26:36.873366"], ["id", 1]]
+  [1m[35m (28.4ms)[0m  COMMIT
+Redirected to http://localhost:3000/
+Completed 302 Found in 181ms (ActiveRecord: 49.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-07-27 18:56:36 +0530
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)[0m  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 317ms (Views: 315.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/6/edit" for 127.0.0.1 at 2015-07-27 18:56:39 +0530
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered shared/_error_messages.html.erb (0.6ms)
+  Rendered users/_form.html.erb (44.0ms)
+  Rendered users/edit.html.erb within layouts/application (61.9ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 418ms (Views: 414.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:56:51 +0530
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 323ms (Views: 320.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2015-07-27 18:56:56 +0530
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered devise/registrations/edit.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 334ms (Views: 331.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2015-07-27 18:57:00 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  [1m[36mPatient Load (1.2ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (6.4ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 324ms (Views: 321.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:57:02 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)[0m  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 315ms (Views: 311.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/changepassword/6" for 127.0.0.1 at 2015-07-27 18:57:04 +0530
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by UsersController#changepassword as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  Rendered users/changepassword.erb within layouts/application (5.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 341ms (Views: 339.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:57:07 +0530
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 312ms (Views: 310.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:57:14 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)[0m  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 314ms (Views: 310.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:57:16 +0530
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (5.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 321ms (Views: 317.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:57:17 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0  [["id", 1]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)[0m  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.9ms)
+  Rendered layouts/_messages.html.erb (0.1ms)
+Completed 200 OK in 333ms (Views: 330.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/search" for 127.0.0.1 at 2015-07-27 18:57:18 +0530
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Processing by PatientsController#search as HTML
+  [1m[36mPatient Load (0.7ms)[0m  [1mSELECT  "patients".* FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')  ORDER BY "patients"."id" DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "patients" WHERE (gender LIKE '%%' AND  location LIKE '%%' AND topicdiscussed LIKE '%%' AND timelength LIKE '%%' AND noofparticipant LIKE '%%' AND computer LIKE '%%' AND startdate >= '%1970-01-01%' AND startdate <= '%2100-12-31%')
+  Rendered patients/search.erb within layouts/application (5.1ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.4ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 307ms (Views: 305.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:57:19 +0530
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)[0m  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (2.1ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 315ms (Views: 312.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/6/edit" for 127.0.0.1 at 2015-07-27 18:57:21 +0530
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  Rendered shared/_error_messages.html.erb (0.0ms)
+  Rendered users/_form.html.erb (3.2ms)
+  Rendered users/edit.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_navigation_links.html.erb (0.4ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 323ms (Views: 320.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2015-07-27 18:57:27 +0530
+Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" != $1) LIMIT 10 OFFSET 0[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "users" WHERE ("users"."id" != $1)  [["id", 1]]
+  Rendered users/index.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.5ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 327ms (Views: 323.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/6/edit" for 127.0.0.1 at 2015-07-27 18:58:11 +0530
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 6]]
+  Rendered shared/_error_messages.html.erb (0.1ms)
+  Rendered users/_form.html.erb (4.3ms)
+  Rendered users/edit.html.erb within layouts/application (5.3ms)
+  Rendered layouts/_navigation_links.html.erb (0.3ms)
+  Rendered layouts/_navigation.html.erb (1.6ms)
+  Rendered layouts/_messages.html.erb (0.0ms)
+Completed 200 OK in 317ms (Views: 313.6ms | ActiveRecord: 0.9ms)

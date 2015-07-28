@@ -12,17 +12,24 @@
 	<td><%= @patient.id %></td>
         </tr>
 	<tr>
-        <td>Start Date</td>
+        <td>Initial Contact</td>
 	<td><%= formatted_date(@patient.startdate) %></td>
 	</tr>
 	<tr>
         <td width="20%">Start Time</td>
 	<td><%= formatted_time(@patient.starttime) %></td>
         </tr>
-	<tr>
+        <tr>
+        <td>No Of Visits</td>
+	<td><%= @patient.noofvisits %></td>
+	</tr>
+        <td>Group Id</td>
+	<td><%= @patient.groupid %></td>
+	</tr>
+	<!--<tr>
         <td>Initial Contact</td>
 	<td><%= @patient.initialcontact %></td>
-	</tr>
+	</tr>-->
 	<tr>
         <td width="20%">Age Range</td>
 	<td><%= @patient.agerange %></td>
