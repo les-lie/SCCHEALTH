@@ -24,7 +24,7 @@
                 <%= text_field_tag 'patient[startdate]', form_date , "data-provide"=>"datepicker" %>
             </li>
             <li>
-                <%= f.label :start_time %>
+                <%= f.label :start_date %>
                 <%= f.text_field :starttime, id: "timepicker" %>
             </li>
             <li>
