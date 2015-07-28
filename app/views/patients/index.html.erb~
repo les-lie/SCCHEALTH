@@ -17,7 +17,7 @@
       <% @patients.each do |patient| %>
         <tr>
           <td><%= patient.id %></td>
-          <td><%= formatted_date(patient.startdate) %></td>
+          <td><%= patient.initialcontact %></td>
           <td><%= patient.agerange %></td>
           <td><%= patient.gender %></td>
 	  <td><%= patient.timelength %></td>
