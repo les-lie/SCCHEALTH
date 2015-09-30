@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150813044623) do
+ActiveRecord::Schema.define(version: 20150930044629) do
 
   create_table "patients", force: :cascade do |t|
     t.date    "startdate"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150813044623) do
     t.integer "userid"
     t.string  "groupid"
     t.string  "noofvisits"
+    t.integer "navigator_id"
   end
 
   create_table "users", force: :cascade do |t|

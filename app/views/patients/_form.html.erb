@@ -21,18 +21,18 @@
                 form_date=''
               end
               %>
-                <%= text_field_tag 'patient[startdate]', form_date , "data-provide"=>"datepicker" %>
+                <%= text_field_tag 'patient[startdate]', form_date , "data-provide"=>"datepicker", placeholder: 'mm/dd/yyyy' %>
             </li>
             <li>
-                <%= f.label :start_time %>
-                <%= f.text_field :starttime, id: "timepicker" %>
-            </li>
+              <%= f.label :start_time %>
+              <%= f.text_field :starttime, id: "timepicker" %>
+            </li>y
             <li>
-                <%= f.label :group_id %>
+                <%= f.label :group_id, 'Group ID' %>
                 <%= f.text_field :groupid %>
             </li>
             <li>
-              <%= f.label :no_of_visits %>
+              <%= f.label :no_of_visits, 'Number of Client Interactions' %>
               <%= f.select(:noofvisits, options_for_select(['Initial', '1-2', '3-5', '6-10','10+'], @patient.noofvisits )) %>
             </li>
             <!--<li>
@@ -44,7 +44,7 @@
               <%= f.select(:languagespeaking, options_for_select(['English','Spanish','Polish', 'Vietnamese', 'French/Creole']  , @patient.languagespeaking )) %>
             </li>
             <li>
-                <%= f.label :age_range %>
+                <%= f.label :age %>
                 <%= f.select(:agerange, options_for_select(['10-15', '15-20', '20-25', '25-30', '30-35', '35-40', '40-45', '45-50', '50-60', '60-80', '80-100'], @patient.agerange )) %>
             </li>
             
@@ -53,8 +53,9 @@
               <%= f.select(:gender, options_for_select(['Male', 'Female','Other'], @patient.gender )) %>
             </li>
             <li>
-              <%= f.label :Language_preference_reading %>
-              <%= f.text_field :languagereading %>
+              <%= f.label :language_reading, 'Language Reading' %>
+              <%= f.select(:languagereading, options_for_select(['English','Spanish','Polish', 'Vietnamese', 'French/Creole']  , @patient.languagereading )) %>
+            </li>
             </li>
             <li>
               <%= f.label :Computer_Skills %>
@@ -72,12 +73,8 @@
               <%= f.label :Navigator_notes_OR_observations %>
               <%= f.text_field :notes %>
             </li>
-              <li>
-              <%= f.label :Number_of_Participant_Interactions %>
-              <%= f.text_field :noofparticipant %>  
-            </li> 
              <li>
-              <%= f.label :length_of_time_with_patient %>
+              <%= f.label :length_of_time_with_patient, 'Length of Time With Client' %>
               <%= f.select(:timelength, options_for_select(['10 MIN', '20 MIN', '30 MIN', '40 MIN', '1 HR'], @patient.timelength )) %>
             </li>
           
@@ -86,10 +83,15 @@
               <%= f.select(:location, options_for_select(["Prieto", "Sengstacke", "A.C.T.S. OF F.A.I.T.H.", "Ann & Robert H. Lurie Children’s Hospital","Cook County Health and Hospitals System (CCHHS)", "Erie Family Health Center", "Family Focus", "Health Leads – Chicago", "Heartland Health Outreach", "Komed Holman Health Center"], @patient.location )) %>
             </li>
             <li>
-              <%= f.label :Number_of_One_on_one_interactions %>
+              <%= f.label :type_of_interaction, 'Type of Interaction' %>
               <%= f.select(:noofinteraction, options_for_select(['Individual', 'Group'], @patient.noofinteraction )) %>
             </li>
             
+            <li>
+              <%= f.label :navigator, 'Navigator' %>
+              <%= f.select(:navigator_id, options_for_select(User.navigators_for_select, @patient.navigator_id )) %>
+            </li>
+
             <li>
               <%= link_to "Back", :back, class: "btn btn-default left" %>
               <%= f.submit "Save", class: "btn btn-primary white right" %>

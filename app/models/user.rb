@@ -14,4 +14,7 @@ class User < ActiveRecord::Base
   #validates :status, presence: true
   #validates :isadmin, presence: true
   
+  def self.navigators_for_select
+    where(status: true).map {|user| [user.name, user.id] }
+  end
 end
