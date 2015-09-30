@@ -11,13 +11,16 @@ gem 'kaminari'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails'
 gem 'rb-readline', '~> 0.4.2'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
 gem 'bootstrap-sass'
 gem 'devise'
+
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
@@ -25,11 +28,13 @@ group :development do
   gem 'spring-commands-rspec'
 end
 group :development, :test do
-  gem 'factory_girl_rails'
   gem 'faker'
-  gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'guard-livereload', '~> 2.4', require: false
+  gem 'factory_girl_rails'
 end
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -40,4 +45,5 @@ group :test do
   gem 'launchy'
   gem 'selenium-webdriver'
 end
+
 gem 'bootstrap-timepicker-rails-addon'
