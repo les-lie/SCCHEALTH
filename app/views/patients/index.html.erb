@@ -14,6 +14,12 @@
       </tr>
     </thead>
     <tbody>
+        <tr>
+          <td colspan='18' style='align:left'>
+            <%= link_to "CSV", export_path(format: "csv"), class: "btn btn-primary btn-xs white" %> |
+            <%= link_to "Excel", export_path(format: "xls"), class: "btn btn-primary btn-xs white" %>
+          </td>
+        </tr>
       <% @patients.each do |patient| %>
         <tr>
           <td><%= patient.id %></td>
