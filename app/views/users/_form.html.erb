@@ -14,14 +14,6 @@
           <%= f.text_field :email %>
         </li>
         <li>
-          <%= f.label :admin %>
-          <%= f.select(:isadmin  , options_for_select([['No',false], ['Yes',true]], @user.isadmin )) %>
-        </li>
-         <li >
-          <%= f.label :status %>
-          <%= f.select(:status  , options_for_select([['Deactive',false], ['Active',true]], @user.status )) %>
-        </li>
-        <li>
           <%= link_to "Back", users_path, class: "btn btn-default left" %>
           <%= f.submit "Save", class: "btn btn-primary white right"%>
         </li>
