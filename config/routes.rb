@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   devise_scope :user do
     authenticated :user do
 #     root :to => 'users#index'
@@ -14,17 +15,19 @@ Rails.application.routes.draw do
 #     match "/userstatus/:id" => 'users#changestatus'
       get 'home' => 'patients#index'
       get 'search' => 'patients#search'
-     # get 'createrecord' => 'patients#create'
+      get 'what' => 'patients#what'
+#     get 'createrecord' => 'patients#create'
       post 'saverecord' => 'patients#multisave'
       get 'allrecords' => 'patients#index'
       get 'bulkcreate' => 'patients#bulkcreate'
       get 'export' => 'patients#export'
+    end
+
+    unauthenticated :user do
+      root :to => 'devise/sessions#new', as: :unauthenticated_root
+    end
   end
-  unauthenticated :user do
-    root :to => 'devise/sessions#new', as: :unauthenticated_root
-  end
-  
-end
+
   resources :users
   resources :patients
 end
