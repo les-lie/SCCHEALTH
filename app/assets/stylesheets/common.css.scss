@@ -15,7 +15,7 @@ input {font-family: Verdana, Geneva, sans-serif;}
 .header_login {background:#efefef;padding:50px 0;}
 .header_login_box {width:60%;margin:0 auto;display:table;}
 .header_login_box h2 {font-size:35px;color:#013976;margin:0 0 30px 0;}
-.header_login_box li {float:left;width:100%;position:relative;}
+.header_login_box li {position:relative;}
 .header_login_box li input {border:1px solid #e2e2e2;padding:14px 18px 17px 57px;width:100%;margin: 0 0 30px;background:#fff;font-size:16px;}
 .header_login_box li input[type="submit"] {width:auto;padding:15px 40px;background:#013976;font-size:20px;font-weight:bold;color:#fff;}
 .header_login_box li span {
@@ -45,8 +45,3 @@ input {font-family: Verdana, Geneva, sans-serif;}
 
 .login_right {float:right;}
 .login_right a {padding:10px 15px;background:#013976;float:left;margin: 0 0 0 15px;font-size:15px;color:#fff;}
-
-
-
-
-
