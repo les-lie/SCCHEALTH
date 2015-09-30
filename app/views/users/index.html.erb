@@ -18,19 +18,25 @@
           <td><%= user.email %></td>
           <td><%= user.isadmin %></td>
           <td>
-            <%= link_to 'Edit Details', edit_user_path(user), class: "btn btn-primary btn-xs white" if @current_user.admin? || @current_user = user %>
+          <% if @current_user == user || @current_user.isadmin %>
+            <%= link_to 'Edit Details', edit_user_path(user), class: "btn btn-primary btn-xs white" %>
+          <% end %>
           </td>
-          <td><%= link_to 'Change Password', changepassword_path(user), class: "btn btn-primary btn-xs white" if @current_user.admin? || @current_user = user %></td>
           <td>
-            <%=
-              if @current_user.admin?
+          <% if @current_user == user || @current_user.isadmin %>
+            <%= link_to 'Change Password', changepassword_path(user), class: "btn btn-primary btn-xs white" if @current_user.isadmin || @current_user = user %>
+          <% end %>
+          </td>
+          <td>
+            <% if @current_user.isadmin %>
+              <%
                 if user.status == false
                   link_to 'Activate', userstatus_path(user), method: :get, class: "btn btn-danger btn-xs white"
                 else
                   link_to 'Deactivate', userstatus_path(user), method: :get,class: "btn btn-danger btn-xs white"
                 end
-              end
-          %>
+              %>
+            <% end %>
         </td>
         </tr>
       <% end %>
