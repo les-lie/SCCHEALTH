@@ -13,11 +13,12 @@
  *= require bootstrap-datepicker
  *= require bootstrap-datepicker3
  *= require bootstrap-timepicker
- *= require_self
  *= require bootstrap
- *= require_tree .
+ *= require common
+ *= require framework_and_overrides
+ *= require_self
  */
-@import "common.css";
+
 a.white:link { color:#FFFFFF !important }      /* unvisited link */
 a.white:visited { color:#FFFFFF !important}  /* visited link */
 a.white:hover { color:#FFFFFF !important}  /* mouse over link */
